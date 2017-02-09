@@ -15,6 +15,13 @@ class TestCardSpec extends ObjectBehavior
 
     public function it_should_return_this_card_name()
     {
+        $this->getType()->shouldBeString();
         $this->getName()->shouldBe('Test');
+    }
+
+    public function it_should_retunr_type()
+    {
+        $this->getType()->shouldBeString();
+        $this->getType()->shouldBe('Test');
     }
 }

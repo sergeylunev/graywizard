@@ -4,10 +4,8 @@ namespace GrayWizard\Cards;
 
 use GrayWizard\CardInterface;
 
-class TestCard implements CardInterface
+class TestCard extends AbstractCard implements CardInterface
 {
-    public function getName()
-    {
-        return 'Test';
-    }
+    protected $type = 'Test';
+    protected $name = 'Test';
 }
