@@ -15,6 +15,6 @@ class GraveYardSpec extends ObjectBehavior
 
     public function it_should_be_countable($parameters)
     {
-        
+        $this->count()->shouldBeInt();
     }
 }
