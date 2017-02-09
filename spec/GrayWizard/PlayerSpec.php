@@ -18,10 +18,10 @@ class PlayerSpec extends ObjectBehavior
         $this->getHand()->shouldBeAnInstanceOf('GrayWizard\Hand');
     }
 
-    public function it_should_have_deck()
-    {
-        $this->getDeck()->shouldBeAnInstanceOf('GrayWizard\Deck');
-    }
+    // public function it_should_have_deck()
+    // {
+    //     $this->getDeck()->shouldBeAnInstanceOf('GrayWizard\Deck');
+    // }
 
     public function it_should_have_graveyard()
     {

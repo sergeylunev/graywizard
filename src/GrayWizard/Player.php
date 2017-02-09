@@ -9,10 +9,10 @@ class Player
         return new Hand();
     }
 
-    public function getDeck()
-    {
-        return new Deck([]);
-    }
+    // public function getDeck()
+    // {
+    //     return new Deck([]);
+    // }
 
     public function getGraveYard()
     {
