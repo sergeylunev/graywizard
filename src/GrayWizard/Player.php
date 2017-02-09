@@ -11,7 +11,7 @@ class Player
 
     public function getDeck()
     {
-        return new Deck();
+        return new Deck([]);
     }
 
     public function getGraveYard()
