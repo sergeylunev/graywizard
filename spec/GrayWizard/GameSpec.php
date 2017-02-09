@@ -46,4 +46,10 @@ class GameSpec extends ObjectBehavior
         $this->passTurn();
         $this->getCurrentTurn()->shouldReturn(2);
     }
+
+    public function it_should_have_two_players()
+    {
+        $this->getFirstPlayer()->shouldReturnAnInstanceOf('\GrayWizard\Player');
+        $this->getSecondPlayer()->shouldReturnAnInstanceOf('\GrayWizard\Player');
+    }
 }

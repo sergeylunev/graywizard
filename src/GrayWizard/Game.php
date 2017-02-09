@@ -10,7 +10,7 @@ class Game
     /**
      * @var string
      */
-    protected $status = self::NOT_STARTED;
+    protected $status;
 
     /**
      * @var int
@@ -60,5 +60,21 @@ class Game
         $this->setCurrentTurn($this->getCurrentTurn() + 1);
 
         return $this->getCurrentTurn();
+    }
+
+    /**
+     * @return Player
+     */
+    public function getFirstPlayer()
+    {
+        return new Player();
+    }
+
+    /**
+     * @return Player
+     */
+    public function getSecondPlayer()
+    {
+        return new Player();
     }
 }
