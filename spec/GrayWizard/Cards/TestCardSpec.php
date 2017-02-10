@@ -24,4 +24,10 @@ class TestCardSpec extends ObjectBehavior
         $this->getType()->shouldBeString();
         $this->getType()->shouldBe('Test');
     }
+
+    public function it_should_have_manacost()
+    {
+        $this->getManaCost()->shouldBeInt();
+        $this->getManaCost()->shouldBe(0);
+    }
 }

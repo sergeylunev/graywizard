@@ -15,4 +15,9 @@ class AbstractCard implements CardInterface
     {
         return $this->type;
     }
+
+    public function getManaCost()
+    {
+        return $this->manaCost;
+    }
 }

@@ -15,4 +15,10 @@ interface CardInterface
      * @return string
      */
     public function getType();
+
+    /**
+     * Get manacost of card
+     * @return int
+     */
+    public function getManaCost();
 }
