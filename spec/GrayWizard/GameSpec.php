@@ -47,11 +47,11 @@ class GameSpec extends ObjectBehavior
         $this->getCurrentTurn()->shouldReturn(2);
     }
 
-    public function it_should_add_playes($player)
-    {
-        $player->beADoubleOf('GrayWizard\Player');
-        $this->addPlayer($player);
-    }
+    // public function it_should_add_playes($player)
+    // {
+    //     $player->beADoubleOf('GrayWizard\Player');
+    //     $this->addPlayer($player);
+    // }
 
     public function it_should_have_two_players()
     {
