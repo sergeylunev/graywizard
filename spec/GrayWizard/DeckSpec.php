@@ -57,31 +57,31 @@ class DeckSpec extends ObjectBehavior
     //  * If we whant to construct deck with card we don't have
     //  * Then we throw exception
     //  */
-    // public function it_throws_exception_if_we_dont_have_such_card()
-    // {
-    //     $this->beConstructedWith(['WrongName']);
-    //     $this->shouldThrow('\Exception')->duringInstantiation();
-    // }
+     public function it_throws_exception_if_we_dont_have_such_card()
+     {
+         $this->beConstructedWith(['WrongName']);
+         $this->shouldThrow('\Exception')->duringInstantiation();
+     }
 
     // /**
     //  * Check if we have shuffle method for Deck.
     //  * It shouldn't return anything.
     //  */
-    // public function it_can_be_shuffled()
-    // {
-    //     $this->shuffle();
-    // }
+     public function it_can_be_shuffled()
+     {
+         $this->shuffle();
+     }
 
     // /**
     //  * When we draw from deck, we need to recive a Card
     //  * And number of cards in deck should be less then before this
     //  */
-    // public function can_draw_card_from_deck()
-    // {
-    //     $this->beConstructedWith(['Test']);
+    public function can_draw_card_from_deck()
+     {
+         $this->beConstructedWith(['Test']);
 
-    //     $this->count()->shouldBe(1);
-    //     $this->draw()->shouldBeAnInstanceOf('GrayWizard\Card');
-    //     $this->count()->shouldBe(0);
-    // }
+         $this->count()->shouldBe(1);
+         $this->draw()->shouldBeAnInstanceOf('GrayWizard\Card');
+         $this->count()->shouldBe(0);
+    }
 }
