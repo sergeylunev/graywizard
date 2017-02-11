@@ -15,10 +15,10 @@ class DeckSpec extends ObjectBehavior
     //  * Technical method
     //  * Constructing object for test
     //  */
-    // function let()
-    // {
-    //     $this->beConstructedWith([]);
-    // }
+     function let()
+     {
+         $this->beConstructedWith([]);
+     }
 
     // /**
     //  * We need to check, that we can create object
@@ -27,10 +27,10 @@ class DeckSpec extends ObjectBehavior
     //  * In constructor for this class we get array of card names
     //  * Constructor can be empty as in this example
     //  */
-    // function it_is_initializable()
-    // {
-    //     $this->shouldHaveType(Deck::class);
-    // }
+     function it_is_initializable()
+     {
+         $this->shouldHaveType(Deck::class);
+     }
 
     // /**
     //  * Check how much is in deck
