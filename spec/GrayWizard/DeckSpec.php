@@ -37,21 +37,21 @@ class DeckSpec extends ObjectBehavior
     //  * For this example we check that this method returns int
     //  * And for deck with no cards number should be 0
     //  */
-    // public function it_should_be_countable()
-    // {
-    //     $this->count()->shouldBeInt();
-    //     $this->count()->shouldBe(0);
-    // }
+     public function it_should_be_countable()
+     {
+         $this->count()->shouldBeInt();
+         $this->count()->shouldBe(0);
+     }
 
     // /**
     //  * If we pass as constructor array with some card name
     //  * Then we have deck with 1 card
     //  */
-    // public function it_can_be_constructed_with_actual_cards()
-    // {
-    //     $this->beConstructedWith(['Test']);
-    //     $this->count()->shouldBe(1);
-    // }
+     public function it_can_be_constructed_with_actual_cards()
+     {
+         $this->beConstructedWith(['Test']);
+         $this->count()->shouldBe(1);
+     }
 
     // /**
     //  * If we whant to construct deck with card we don't have
