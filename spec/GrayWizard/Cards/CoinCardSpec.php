@@ -2,28 +2,28 @@
 
 namespace spec\GrayWizard\Cards;
 
-use GrayWizard\Cards\TestCard;
+use GrayWizard\Cards\CoinCard;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use GrayWizard\CardInterface;
 
-class TestCardSpec extends ObjectBehavior
+class CoinCardSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(TestCard::class);
+        $this->shouldHaveType(CoinCard::class);
     }
 
     public function it_should_return_this_card_name()
     {
         $this->getType()->shouldBeString();
-        $this->getName()->shouldBe('Test');
+        $this->getName()->shouldBe('Coin');
     }
 
     public function it_should_retunr_type()
     {
         $this->getType()->shouldBeString();
-        $this->getType()->shouldBe('Test');
+        $this->getType()->shouldBe(CardInterface::TYPE_SPELL);
     }
 
     public function it_should_have_manacost()
