@@ -51,9 +51,23 @@ class DeckSpec extends ObjectBehavior
         $this->count()->shouldBe(7);
     }
 
+    /**
+     * We can only add 2 copies of common card to the deck. 
+     * If we add more then we throw an exception
+     */
     public function it_can_not_have_more_then_two_copies_of_commons()
     {
         $this->beConstructedWith(['Coin', 'Coin', 'Coin']);
+        $this->shouldThrow('\Exception')->duringInstantiation();
+    }
+
+    /**
+     * We can only add 1 copy of rare card to the deck.
+     * If we add more we throw an exception
+     */
+    public function it_can_not_have_more_then_one_cpoy_of_rare()
+    {
+        $this->beConstructedWith(['PatchesThePirate', 'PatchesThePirate']);
         $this->shouldThrow('\Exception')->duringInstantiation();
     }
 
