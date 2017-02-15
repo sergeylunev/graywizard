@@ -2,18 +2,18 @@
 
 namespace GrayWizard;
 
-class Deck
+class Deck implements DeckInterface
 {
     public $DeckArray = [];
 
-    public function __construct($Card)
+    public function __construct(array $cards)
     {
-        if ($Card == ['WrongName']) {
+        if ($cards == ['WrongName']) {
             throw new \Exception('This Card Wrong');
         }
 
-        if ($Card != []) {
-            $this->DeckArray[] = $Card; 
+        if ($cards != []) {
+            $this->DeckArray[] = $cards; 
         }
     }	
 
