@@ -5,6 +5,7 @@ namespace spec\GrayWizard;
 use GrayWizard\Hand;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use GrayWizard\Cards;
 
 class HandSpec extends ObjectBehavior
 {
@@ -40,5 +41,19 @@ class HandSpec extends ObjectBehavior
         }
 
         $this->count()->shouldBe(10);
+    }
+
+    public function it_can_get_list_of_cards_in_hand()
+    {
+        $cards = [
+            new Cards\CoinCard(),
+            new Cards\CoinCard(),
+            new Cards\CoinCard(),
+        ];
+
+        $this->beConstructedWith($cards);
+
+        $this->getCards()->shouldBeArray();
+        $this->getCards()->shouldBe($cards);
     }
 }

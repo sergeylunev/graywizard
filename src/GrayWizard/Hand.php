@@ -13,6 +13,11 @@ class Hand
      */
     protected $cards = [];
 
+    public function __construct(array $cards = [])
+    {
+        $this->cards = $cards;
+    }
+
     public function count()
     {
         return count($this->cards);
@@ -30,5 +35,10 @@ class Hand
         }
         
         $this->cards[] = $card;
+    }
+
+    public function getCards()
+    {
+        return $this->cards;
     }
 }
