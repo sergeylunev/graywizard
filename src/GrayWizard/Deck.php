@@ -13,7 +13,10 @@ class Deck
         }
 
         if ($Card != []) {
-            $this->DeckArray[] = $Card; 
+			for ($i = 0; $i < count($Card); $i++)
+			{
+            $this->DeckArray[$i] = $Card[$i]; 
+			}
         }
     }	
 
