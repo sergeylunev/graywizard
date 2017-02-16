@@ -96,10 +96,10 @@ class DeckSpec extends ObjectBehavior
      */
     public function it_can_draw_card_from_deck()
     {
-        $this->beConstructedWith(['Test']);
-
-        $this->count()->shouldBe(1);
-        $this->draw()->shouldBeAnInstanceOf('GrayWizard\Card');
-        $this->count()->shouldBe(0);
+    $this->beConstructedWith(['Test']); 
+ 
+    $this->count()->shouldBe(1); 
+    $this->draw()->shouldBeAnInstanceOf('GrayWizard\Cards\TestCard'); 
+    $this->count()->shouldBe(0);
     }
 }

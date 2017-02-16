@@ -8,15 +8,24 @@ class Deck
 
     public function __construct($Card)
     {
-        if ($Card == ['WrongName']) {
-            throw new \Exception('This Card Wrong');
-        }
-
-        if ($Card != []) {
-			for ($i = 0; $i < count($Card); $i++)
-			{
-            $this->DeckArray[$i] = $Card[$i]; 
+		
+		$tempArr = array_count_values($Card);
+		$commonCard = ['Test', 'Coin', 'LightningBolt'];
+		$legendCard = ['PatchesThePirate', 'Leroy'];
+		
+		foreach ($tempArr as $key=>$cardCount)
+		{
+			if (($cardCount > 2) or (($cardCount>1) and (in_array($key, $legendCard)))) {
+				throw new \Exception('Too many copies '.$key);
 			}
+			
+			if (!class_exists($key . 'Card')) {		
+			    throw new \Exception('Wrong Card: ' . $key);
+		    }
+		}
+		
+        if ($Card != []) {
+            $this->DeckArray = $Card; 
         }
     }	
 
@@ -27,9 +36,10 @@ class Deck
 	
     public function draw()
     {
-        unset($DeckArray[0]);
-        $DeckArray = array_values($DeckArray);
-        return count($this->DeckArray);
+        unset($this->DeckArray[0]);
+        $this->DeckArray = array_values($this->DeckArray);
+		$drowCard = new TestCard();
+        return $drowCard;
     }
 
     public function count()
