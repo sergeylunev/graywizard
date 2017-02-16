@@ -6,28 +6,24 @@ class Deck
 {
     public $DeckArray = [];
 
-    public function __construct($Card)
-    {
-		
-        $tempArr = array_count_values($Card);
-        $commonCard = ['Test', 'Coin', 'LightningBolt'];
-        $legendCard = ['PatchesThePirate', 'Leroy'];
+    public function __construct($card)
+    {	
+        $tempArr = array_count_values($card);
     
-        foreach ($tempArr as $key=>$cardCount)
-        {
-            if (!class_exists('GrayWizard\\Cards\\' . $key . 'Card')) {		
+        foreach ($tempArr as $key => $cardCount) {
+            $cardClass = ('\GrayWizard\\Cards\\' . $key . 'Card');               
+            if (!class_exists($cardClass)) {		
                 throw new \Exception('Wrong Card: ' . $key);
             }		
-
-        $newClass = ('\GrayWizard\\Cards\\' . $key . 'Card');
-        $newCard = new $newClass();
-            if (($cardCount > 2) or (($cardCount>1)	and ($newCard->isRare() == 'rare'))) {
+            $newCard = new $cardClass(); 
+        
+            if (($cardCount > 2) || (($cardCount>1)	&& ($newCard->isRare()))) {
                 throw new \Exception('Too many copies '.$key);
             }			
         }
 		
-        if ($Card != []) {
-            $this->DeckArray = $Card; 
+        if ($card != []) {
+            $this->DeckArray = $card; 
         }
     }	
 
