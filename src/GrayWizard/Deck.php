@@ -15,13 +15,15 @@ class Deck
 		
 		foreach ($tempArr as $key=>$cardCount)
 		{
-			if (($cardCount > 2) or (($cardCount>1) and (in_array($key, $legendCard)))) {
-				throw new \Exception('Too many copies '.$key);
-			}
-			
-			if (!class_exists($key . 'Card')) {		
+			if (!class_exists('GrayWizard\\Cards\\' . $key . 'Card')) {		
 			    throw new \Exception('Wrong Card: ' . $key);
-		    }
+		    }		
+			
+		$newClass = ('\GrayWizard\\Cards\\' . $key . 'Card');
+		$newCard = new $newClass();
+			if (($cardCount > 2) or (($cardCount>1)	and ($newCard->isRare() == 'rare'))) {
+				throw new \Exception('Too many copies '.$key);
+			}			
 		}
 		
         if ($Card != []) {
@@ -36,9 +38,10 @@ class Deck
 	
     public function draw()
     {
+		$newClass = ('\GrayWizard\\Cards\\' . $this->DeckArray[0] . 'Card');
+		$drowCard = new $newClass();
         unset($this->DeckArray[0]);
         $this->DeckArray = array_values($this->DeckArray);
-		$drowCard = new TestCard();
         return $drowCard;
     }
 
