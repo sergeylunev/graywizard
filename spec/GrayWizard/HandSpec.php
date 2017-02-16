@@ -86,4 +86,10 @@ class HandSpec extends ObjectBehavior
         $this->beConstructedWith($cards);
         $this->shouldThrow('\Exception')->during('play', [$cardToPlay]);
     }
+
+    public function it_throw_exception_if_we_try_to_play_card_with_empty_hand()
+    {
+        $cardToPlay = new Cards\LightningBoltCard();
+        $this->shouldThrow('\Exception')->during('play', [$cardToPlay]);
+    }
 }
