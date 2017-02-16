@@ -2,8 +2,6 @@
 
 namespace GrayWizard;
 
-use GrayWizard\CardInterface;
-
 class Hand
 {
     const MAX_SIZE = 10;
@@ -22,17 +20,9 @@ class Hand
     }
 
     /**
-     * Count cards in hand
-     * @return int
-     */
-    public function count()
-    {
-        return count($this->cards);
-    }
-
-    /**
      * Getting max size of hand
-     * @return int 
+     *
+     * @return int
      */
     public function getMaximumSize()
     {
@@ -41,6 +31,7 @@ class Hand
 
     /**
      * Add card to hand
+     *
      * @param CardInterface $card
      */
     public function addCard(CardInterface $card)
@@ -48,16 +39,47 @@ class Hand
         if ($this->count() === self::MAX_SIZE) {
             return;
         }
-        
+
         $this->cards[] = $card;
     }
 
     /**
+     * Count cards in hand
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->cards);
+    }
+
+    /**
      * Get list of all cards in hand
+     *
      * @return CardInterface[]
      */
     public function getCards()
     {
         return $this->cards;
+    }
+
+    /**
+     * @param \GrayWizard\CardInterface $cardToPlay
+     *
+     * @return \GrayWizard\CardInterface|mixed
+     * @throws \Exception
+     */
+    public function play(CardInterface $cardToPlay)
+    {
+        if (!in_array($cardToPlay, $this->cards)) {
+            throw new \Exception('We don\'t have such card in hand');
+        }
+
+        $cardKey = array_search($cardToPlay, $this->cards);
+
+        $card = $this->cards[$cardKey];
+        unset($this->cards[$cardKey]);
+
+        return $card;
     }
 }

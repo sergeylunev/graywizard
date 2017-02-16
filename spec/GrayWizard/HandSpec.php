@@ -2,10 +2,9 @@
 
 namespace spec\GrayWizard;
 
+use GrayWizard\Cards;
 use GrayWizard\Hand;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
-use GrayWizard\Cards;
 
 class HandSpec extends ObjectBehavior
 {
@@ -14,7 +13,7 @@ class HandSpec extends ObjectBehavior
         $this->shouldHaveType(Hand::class);
     }
 
-    public function it_should_be_countable($parameters)
+    public function it_should_be_countable()
     {
         $this->count()->shouldBeInt();
     }
@@ -36,7 +35,7 @@ class HandSpec extends ObjectBehavior
     {
         $card->beADoubleOf('GrayWizard\CardInterface');
 
-        for ($i=0; $i < 11; $i++) { 
+        for ($i = 0; $i < 11; $i++) {
             $this->addCard($card);
         }
 
@@ -53,7 +52,38 @@ class HandSpec extends ObjectBehavior
 
         $this->beConstructedWith($cards);
 
+        $this->count()->shouldBe(3);
         $this->getCards()->shouldBeArray();
         $this->getCards()->shouldBe($cards);
+    }
+
+    public function it_should_have_ability_to_play_card()
+    {
+        $cardToPlay = new Cards\CoinCard();
+
+        $cards = [
+            new Cards\LightningBoltCard(),
+            new Cards\PatchesThePirateCard(),
+            $cardToPlay,
+        ];
+
+        $this->beConstructedWith($cards);
+        $this->count()->shouldBe(3);
+        $this->play($cardToPlay)->shouldBe($cardToPlay);
+        $this->count()->shouldBe(2);
+    }
+
+    public function it_throw_exception_if_we_try_to_play_card_that_not_in_hand()
+    {
+        $cardToPlay = new Cards\LightningBoltCard();
+
+        $cards = [
+            new Cards\CoinCard(),
+            new Cards\CoinCard(),
+            new Cards\CoinCard(),
+        ];
+
+        $this->beConstructedWith($cards);
+        $this->shouldThrow('\Exception')->during('play', [$cardToPlay]);
     }
 }
