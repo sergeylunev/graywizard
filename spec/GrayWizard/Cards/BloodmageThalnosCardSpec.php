@@ -2,23 +2,22 @@
 
 namespace spec\GrayWizard\Cards;
 
-use GrayWizard\Cards\AyaBlackpawCard;
+use GrayWizard\Cards\BloodmageThalnosCard;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use GrayWizard\CardInterface;
 
-class AyaBlackpawCardSpec extends ObjectBehavior
+class BloodmageThalnosCardSpec extends ObjectBehavior
 {
-    
     function it_is_initializable()
     {
-        $this->shouldHaveType(AyaBlackpawCard::class);
+        $this->shouldHaveType(BloodmageThalnosCard::class);
     }
     
     public function it_should_return_this_card_name()
     {
         $this->getType()->shouldBeString();
-        $this->getName()->shouldBe('Aya Blackpaw');
+        $this->getName()->shouldBe('Bloodmage Thalnos');
     }
 
     public function it_should_retunr_type()
@@ -30,7 +29,7 @@ class AyaBlackpawCardSpec extends ObjectBehavior
     public function it_should_have_manacost()
     {
         $this->getManaCost()->shouldBeInt();
-        $this->getManaCost()->shouldBe(6);
+        $this->getManaCost()->shouldBe(2);
     }
     
     public function it_should_have_rarity()

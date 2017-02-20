@@ -2,23 +2,22 @@
 
 namespace spec\GrayWizard\Cards;
 
-use GrayWizard\Cards\AyaBlackpawCard;
+use GrayWizard\Cards\FlamewreathedFacelessCard;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use GrayWizard\CardInterface;
 
-class AyaBlackpawCardSpec extends ObjectBehavior
+class FlamewreathedFacelessCardSpec extends ObjectBehavior
 {
-    
     function it_is_initializable()
     {
-        $this->shouldHaveType(AyaBlackpawCard::class);
+        $this->shouldHaveType(FlamewreathedFacelessCard::class);
     }
     
     public function it_should_return_this_card_name()
     {
         $this->getType()->shouldBeString();
-        $this->getName()->shouldBe('Aya Blackpaw');
+        $this->getName()->shouldBe('Flamewreathed Faceless');
     }
 
     public function it_should_retunr_type()
@@ -30,18 +29,18 @@ class AyaBlackpawCardSpec extends ObjectBehavior
     public function it_should_have_manacost()
     {
         $this->getManaCost()->shouldBeInt();
-        $this->getManaCost()->shouldBe(6);
+        $this->getManaCost()->shouldBe(4);
     }
     
     public function it_should_have_rarity()
     {
         $this->getRarity()->shouldBeString();
-        $this->getRarity()->shouldBe(CardInterface::RARITY_RARE);
+        $this->getRarity()->shouldBe(CardInterface::RARITY_COMMON);
     }
     
     public function it_should_be_common_card()
     {
         $this->isRare()->shouldBeBoolean();
-        $this->isRare()->shouldBe(true);
+        $this->isRare()->shouldBe(false);
     }
 }
