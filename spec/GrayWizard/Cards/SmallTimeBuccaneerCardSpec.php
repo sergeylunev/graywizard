@@ -17,7 +17,7 @@ class SmallTimeBuccaneerCardSpec extends ObjectBehavior
     public function it_should_return_this_card_name()
     {
         $this->getType()->shouldBeString();
-        $this->getName()->shouldBe('Small Time Buccaneer');
+        $this->getName()->shouldBe('Small-Time Buccaneer');
     }
 
     public function it_should_retunr_type()
