@@ -6,6 +6,7 @@ interface CardInterface
 {
     const TYPE_SPELL = 'spell';
     const TYPE_CREATURE = 'creature';
+    const TYPE_WEAPON = 'weapon';
 
     const RARITY_COMMON = 'common';
     const RARITY_RARE = 'rare';
