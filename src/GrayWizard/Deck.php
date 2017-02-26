@@ -6,14 +6,24 @@ class Deck implements DeckInterface
 {
     public $DeckArray = [];
 
-    public function __construct(array $cards)
-    {
-        if ($cards == ['WrongName']) {
-            throw new \Exception('This Card Wrong');
+    public function __construct(array $card)
+    {	
+        $tempArr = array_count_values($card);
+    
+        foreach ($tempArr as $key => $cardCount) {
+            $cardClass = ('\GrayWizard\\Cards\\' . $key . 'Card');               
+            if (!class_exists($cardClass)) {		
+                throw new \Exception('Wrong Card: ' . $key);
+            }		
+            $newCard = new $cardClass(); 
+        
+            if (($cardCount > 2) || (($cardCount>1)	&& ($newCard->isRare()))) {
+                throw new \Exception('Too many copies '.$key);
+            }			
         }
-
-        if ($cards != []) {
-            $this->DeckArray[] = $cards; 
+		
+        if ($card != []) {
+            $this->DeckArray = $card; 
         }
     }	
 
@@ -21,12 +31,14 @@ class Deck implements DeckInterface
     {
         return 0;
     }
-	
+    
     public function draw()
     {
-        unset($DeckArray[0]);
-        $DeckArray = array_values($DeckArray);
-        return count($this->DeckArray);
+        $newClass = ('\GrayWizard\\Cards\\' . $this->DeckArray[0] . 'Card');
+        $drowCard = new $newClass();
+        unset($this->DeckArray[0]);
+        $this->DeckArray = array_values($this->DeckArray);
+        return $drowCard;
     }
 
     public function count()
