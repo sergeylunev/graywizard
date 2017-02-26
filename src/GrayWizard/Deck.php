@@ -2,11 +2,11 @@
 
 namespace GrayWizard;
 
-class Deck
+class Deck implements DeckInterface
 {
     public $DeckArray = [];
 
-    public function __construct($card)
+    public function __construct(array $card)
     {	
         $tempArr = array_count_values($card);
     

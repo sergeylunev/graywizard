@@ -2,3 +2,4 @@ vendor
 bin
 !bin/.gitkeep
 composer.phar
+.idea
