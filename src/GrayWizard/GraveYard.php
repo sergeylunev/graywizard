@@ -2,7 +2,7 @@
 
 namespace GrayWizard;
 
-class GraveYard
+class GraveYard implements GraveYardInterface
 {
     public function count()
     {

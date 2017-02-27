@@ -3,11 +3,22 @@
 namespace spec\GrayWizard;
 
 use GrayWizard\Game;
+use GrayWizard\PlayerInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class GameSpec extends ObjectBehavior
 {
+    public function let($player1, $player2)
+    {
+        $player1->beADoubleOf(PlayerInterface::class);
+        $player2->beADoubleOf(PlayerInterface::class);
+
+        $this->beConstructedWith(
+            $player1, $player2
+        );
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(Game::class);

@@ -2,10 +2,8 @@
 
 namespace GrayWizard;
 
-class Hand
+class Hand implements HandInterface
 {
-    const MAX_SIZE = 10;
-
     /**
      * @var array
      */

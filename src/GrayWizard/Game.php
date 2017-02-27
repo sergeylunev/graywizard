@@ -86,7 +86,7 @@ class Game
      */
     public function getFirstPlayer()
     {
-        return new Player();
+        // TODO: This need to return actual player
     }
 
     /**
@@ -94,6 +94,6 @@ class Game
      */
     public function getSecondPlayer()
     {
-        return new Player();
+        // TODO: This need to return actual player
     }
 }
