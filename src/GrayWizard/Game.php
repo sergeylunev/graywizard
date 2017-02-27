@@ -17,33 +17,51 @@ class Game
      */
     protected $currentTurn;
 
+    /**
+     * Game constructor.
+     */
     public function __construct()
     {
         $this->setStatus(self::NOT_STARTED);
         $this->setCurrentTurn(0);        
     }
 
+    /**
+     * @return string
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * @param $status
+     */
     protected function setStatus($status)
     {
         $this->status = $status;
     }
 
+    /**
+     * Starting the game
+     */
     public function start()
     {
         $this->setStatus(self::STARTED);
         $this->setCurrentTurn(1);
     }
 
+    /**
+     * @return int
+     */
     public function getCurrentTurn()
     {
         return $this->currentTurn;
     }
 
+    /**
+     * @param int $currentTurn
+     */
     protected function setCurrentTurn($currentTurn)
     {
         $this->currentTurn = $currentTurn;
@@ -51,6 +69,7 @@ class Game
 
     /**
      * @return int
+     * @throws \Exception
      */
     public function passTurn()
     {
