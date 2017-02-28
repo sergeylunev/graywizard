@@ -1,0 +1,31 @@
+<?php
+
+namespace GrayWizard;
+
+class ManaPool
+{
+    protected $activeMana;
+
+    public function __construct()
+    {
+        $this->activeMana = 1;
+    }
+
+    public function getActiveMana()
+    {
+        return $this->activeMana;
+    }
+
+    public function spend($amount)
+    {
+        if (!$this->canSpend($amount)) {
+            throw new \Exception("We don't have such amount of mana available");
+        }
+        $this->activeMana = $this->activeMana - $amount;
+    }
+
+    public function canSpend($amount)
+    {
+        return $this->activeMana >= $amount;
+    }
+}
