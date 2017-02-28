@@ -81,4 +81,44 @@ class ManaPoolSpec extends ObjectBehavior
         }
         $this->canAddManaCrystal()->shouldBe(false);
     }
+
+    public function it_should_refresh_active_mana()
+    {
+        $this->addManaCrystal();
+        $this->refresh();
+        $this->getActiveMana()->shouldBe(2);
+    }
+
+    public function it_should_add_mana_crystal_and_refresh_on_turn_starts()
+    {
+        $this->onTurnStart();
+        $this->getActiveMana()->shouldBe(2);
+        $this->getManaCrystals()->shouldBe(2);
+    }
+
+    public function it_should_only_refresh_mana_after_ten_turns()
+    {
+        for ($i = 0; $i < 11; $i++) {
+            $this->onTurnStart();
+        }
+        $this->getActiveMana()->shouldBe(ManaPool::MAX_AMOUNT);
+        $this->getManaCrystals()->shouldBe(ManaPool::MAX_AMOUNT);
+    }
+
+    public function it_should_add_active_mana_crystal()
+    {
+        $this->addActiveMana();
+        $this->getActiveMana()->shouldBe(2);
+        $this->getManaCrystals()->shouldBe(1);
+    }
+
+    public function it_should_add_active_mana_but_not_more_than_maximum()
+    {
+        for ($i = 0; $i < 11; $i++) {
+            $this->addActiveMana();
+        }
+
+        $this->getActiveMana()->shouldBe(ManaPool::MAX_AMOUNT);
+        $this->getManaCrystals()->shouldBe(1);
+    }
 }

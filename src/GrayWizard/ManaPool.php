@@ -50,4 +50,26 @@ class ManaPool
     {
         return $this->manaCrystals !== self::MAX_AMOUNT;
     }
+
+    public function refresh()
+    {
+        $this->activeMana = $this->manaCrystals;
+    }
+
+    public function onTurnStart()
+    {
+        if ($this->canAddManaCrystal()) {
+            $this->addManaCrystal();
+        }
+        $this->refresh();
+    }
+
+    public function addActiveMana()
+    {
+        if ($this->activeMana === self::MAX_AMOUNT) {
+            return;
+        }
+
+        $this->activeMana++;
+    }
 }
