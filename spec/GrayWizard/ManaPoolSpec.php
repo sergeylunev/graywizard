@@ -52,4 +52,33 @@ class ManaPoolSpec extends ObjectBehavior
         $this->spend(1);
         $this->getManaCrystals()->shouldBe(1);
     }
+
+    public function it_should_add_empty_mana_crystals()
+    {
+        $this->addManaCrystal();
+        $this->getActiveMana()->shouldBe(1);
+        $this->getManaCrystals()->shouldBe(2);
+    }
+
+    public function it_should_not_have_more_than_max_amount_of_crystals()
+    {
+        for ($i = 0; $i < 9; $i++) {
+            $this->addManaCrystal();
+        }
+        $this->shouldThrow(\Exception::class)->during('addManaCrystal');
+    }
+
+    public function it_should_check_if_can_add_more_mana_crystals()
+    {
+        $this->canAddManaCrystal()->shouldBeBoolean();
+        $this->canAddManaCrystal()->shouldBe(true);
+    }
+
+    public function it_should_tell_if_we_cant_add_more_mana_crystals()
+    {
+        for ($i = 0; $i < 9; $i++) {
+            $this->addManaCrystal();
+        }
+        $this->canAddManaCrystal()->shouldBe(false);
+    }
 }

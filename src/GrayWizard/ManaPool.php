@@ -4,6 +4,8 @@ namespace GrayWizard;
 
 class ManaPool
 {
+    const MAX_AMOUNT = 10;
+
     protected $activeMana;
     protected $manaCrystals;
 
@@ -34,5 +36,18 @@ class ManaPool
     public function getManaCrystals()
     {
         return $this->manaCrystals;
+    }
+
+    public function addManaCrystal()
+    {
+        if (!$this->canAddManaCrystal()) {
+            throw new \Exception("We can't add more than maximum amount of mana crystals");
+        }
+        $this->manaCrystals++;
+    }
+
+    public function canAddManaCrystal()
+    {
+        return $this->manaCrystals !== self::MAX_AMOUNT;
     }
 }
