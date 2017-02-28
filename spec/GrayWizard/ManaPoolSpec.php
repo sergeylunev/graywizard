@@ -40,4 +40,16 @@ class ManaPoolSpec extends ObjectBehavior
     {
         $this->canSpend(2)->shouldBe(false);
     }
+
+    public function it_should_return_number_of_mana_crystals()
+    {
+        $this->getManaCrystals()->shouldBeInteger();
+        $this->getManaCrystals()->shouldBe(1);
+    }
+
+    public function it_should_not_change_amount_of_crystals_after_mana_spending()
+    {
+        $this->spend(1);
+        $this->getManaCrystals()->shouldBe(1);
+    }
 }

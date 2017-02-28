@@ -5,10 +5,12 @@ namespace GrayWizard;
 class ManaPool
 {
     protected $activeMana;
+    protected $manaCrystals;
 
     public function __construct()
     {
         $this->activeMana = 1;
+        $this->manaCrystals = 1;
     }
 
     public function getActiveMana()
@@ -27,5 +29,10 @@ class ManaPool
     public function canSpend($amount)
     {
         return $this->activeMana >= $amount;
+    }
+
+    public function getManaCrystals()
+    {
+        return $this->manaCrystals;
     }
 }
