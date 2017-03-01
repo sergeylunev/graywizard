@@ -4,7 +4,6 @@ namespace spec\GrayWizard;
 
 use GrayWizard\Game;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class GameSpec extends ObjectBehavior
 {
