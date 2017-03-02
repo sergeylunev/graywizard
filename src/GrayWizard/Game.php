@@ -7,6 +7,7 @@ class Game
     const STARTED = 'started';
     const NOT_STARTED = 'not_started';
 
+    
     /**
      * @var string
      */
@@ -23,7 +24,13 @@ class Game
     public function __construct()
     {
         $this->setStatus(self::NOT_STARTED);
-        $this->setCurrentTurn(0);        
+        $this->setCurrentTurn(0); 
+        $player = '\GrayWizard\\Player';
+    if (class_exists($player))
+    {
+        $player1 = new $player();
+        $player2 = new $player();
+    }
     }
 
     /**
@@ -87,12 +94,7 @@ class Game
     public function getFirstPlayer()
     {
         // TODO: This need to return actual player
-        $firstPlayer = '\GrayWizard\\Player';
-        if (class_exists($firstPlayer))
-        {
-            $player1 = new $firstPlayer;
-            return $player1;
-        }
+        return $this->player1();
     }
 
     /**
@@ -101,11 +103,7 @@ class Game
     public function getSecondPlayer()
     {
         // TODO: This need to return actual player
-        $secondPlayer = '\GrayWizard\\Player';
-        if (class_exists($secondPlayer))
-        {
-            $player2 = new $secondPlayer;
-            return $player2;
-        }
+        return $this->player2();
+        
     }
 }
