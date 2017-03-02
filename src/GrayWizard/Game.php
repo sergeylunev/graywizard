@@ -87,6 +87,12 @@ class Game
     public function getFirstPlayer()
     {
         // TODO: This need to return actual player
+        $firstPlayer = '\GrayWizard\\Player';
+        if (class_exists($firstPlayer))
+        {
+            $player1 = new $firstPlayer;
+            return $player1;
+        }
     }
 
     /**
@@ -95,5 +101,11 @@ class Game
     public function getSecondPlayer()
     {
         // TODO: This need to return actual player
+        $secondPlayer = '\GrayWizard\\Player';
+        if (class_exists($secondPlayer))
+        {
+            $player2 = new $secondPlayer;
+            return $player2;
+        }
     }
 }
