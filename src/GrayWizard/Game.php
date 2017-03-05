@@ -99,7 +99,6 @@ class Game
     public function getSecondPlayer()
     {
         // TODO: This need to return actual player
-        return $this->hsPlayer2;
-        
+        return $this->hsPlayer2;       
     }
 }
