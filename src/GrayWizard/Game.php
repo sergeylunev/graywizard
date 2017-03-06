@@ -6,7 +6,7 @@ class Game
 {
     const STARTED = 'started';
     const NOT_STARTED = 'not_started';
-
+    
     /**
      * @var string
      */
@@ -17,33 +17,54 @@ class Game
      */
     protected $currentTurn;
 
-    public function __construct()
+    /**
+     * Game constructor.
+     */
+    public function __construct($player1, $player2)
     {
         $this->setStatus(self::NOT_STARTED);
-        $this->setCurrentTurn(0);        
+        $this->setCurrentTurn(0); 
+
+        $this->hsPlayer1 = $player1;
+        $this->hsPlayer2 = $player2;   
     }
 
+    /**
+     * @return string
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * @param $status
+     */
     protected function setStatus($status)
     {
         $this->status = $status;
     }
 
+    /**
+     * Starting the game
+     */
     public function start()
     {
         $this->setStatus(self::STARTED);
         $this->setCurrentTurn(1);
     }
 
+    /**
+     * @return int
+     */
     public function getCurrentTurn()
     {
         return $this->currentTurn;
     }
 
+    /**
+     * @param int $currentTurn
+     */
     protected function setCurrentTurn($currentTurn)
     {
         $this->currentTurn = $currentTurn;
@@ -51,6 +72,7 @@ class Game
 
     /**
      * @return int
+     * @throws \Exception
      */
     public function passTurn()
     {
@@ -67,7 +89,8 @@ class Game
      */
     public function getFirstPlayer()
     {
-        return new Player();
+        // TODO: This need to return actual player
+        return $this->hsPlayer1;
     }
 
     /**
@@ -75,6 +98,7 @@ class Game
      */
     public function getSecondPlayer()
     {
-        return new Player();
+        // TODO: This need to return actual player
+        return $this->hsPlayer2;       
     }
 }

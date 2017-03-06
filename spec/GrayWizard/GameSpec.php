@@ -3,10 +3,21 @@
 namespace spec\GrayWizard;
 
 use GrayWizard\Game;
+use GrayWizard\PlayerInterface;
 use PhpSpec\ObjectBehavior;
 
 class GameSpec extends ObjectBehavior
 {
+    public function let($player1, $player2)
+    {
+        $player1->beADoubleOf(PlayerInterface::class);
+        $player2->beADoubleOf(PlayerInterface::class);
+
+        $this->beConstructedWith(
+            $player1, $player2
+        );
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(Game::class);
@@ -46,15 +57,9 @@ class GameSpec extends ObjectBehavior
         $this->getCurrentTurn()->shouldReturn(2);
     }
 
-    // public function it_should_add_playes($player)
-    // {
-    //     $player->beADoubleOf('GrayWizard\Player');
-    //     $this->addPlayer($player);
-    // }
-
     public function it_should_have_two_players()
     {
-        $this->getFirstPlayer()->shouldReturnAnInstanceOf('\GrayWizard\Player');
-        $this->getSecondPlayer()->shouldReturnAnInstanceOf('\GrayWizard\Player');
+        $this->getFirstPlayer()->shouldReturnAnInstanceOf(PlayerInterface::class);
+        $this->getSecondPlayer()->shouldReturnAnInstanceOf(PlayerInterface::class);
     }
 }

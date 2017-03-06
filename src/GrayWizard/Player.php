@@ -4,18 +4,27 @@ namespace GrayWizard;
 
 class Player
 {
-    public function getHand()
+    public function __construct($deck, $hand, $graveyard)
     {
-        return new Hand();
+//        TODO: here we need to get Deck object as argument
+//              also Hand and GraveYard objects needs to be passed as arguments
+        $this->playerDeck = $deck;
+        $this->playerHand = $hand;
+        $this->playerGraveyard = $graveyard;
     }
 
-    // public function getDeck()
-    // {
-    //     return new Deck([]);
-    // }
+    public function getHand()
+    {
+        return $this->playerHand;
+    }
+
+    public function getDeck()
+    {
+        return $this->playerDeck;
+    }
 
     public function getGraveYard()
     {
-        return new GraveYard();
+        return $this->playerGraveyard;
     }
 }
