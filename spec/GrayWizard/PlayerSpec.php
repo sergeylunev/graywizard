@@ -2,9 +2,9 @@
 
 namespace spec\GrayWizard;
 
-use GrayWizard\DeckInterface;
-use GrayWizard\GraveYardInterface;
-use GrayWizard\HandInterface;
+use GrayWizard\Interfaces\DeckInterface;
+use GrayWizard\Interfaces\GraveYardInterface;
+use GrayWizard\Interfaces\HandInterface;
 use GrayWizard\Player;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

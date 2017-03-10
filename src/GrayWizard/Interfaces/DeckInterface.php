@@ -1,8 +1,6 @@
 <?php
 
-namespace GrayWizard;
-
-use GrayWizard\CardInterface;
+namespace GrayWizard\Interfaces;
 
 interface DeckInterface
 {

@@ -2,6 +2,9 @@
 
 namespace GrayWizard;
 
+use GrayWizard\Interfaces\CardInterface;
+use GrayWizard\Interfaces\HandInterface;
+
 class Hand implements HandInterface
 {
     /**
@@ -62,9 +65,9 @@ class Hand implements HandInterface
     }
 
     /**
-     * @param \GrayWizard\CardInterface $cardToPlay
+     * @param \GrayWizard\Interfaces\CardInterface $cardToPlay
      *
-     * @return \GrayWizard\CardInterface|mixed
+     * @return \GrayWizard\Interfaces\CardInterface|mixed
      * @throws \Exception
      */
     public function play(CardInterface $cardToPlay)

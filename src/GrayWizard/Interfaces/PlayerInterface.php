@@ -1,6 +1,6 @@
 <?php
 
-namespace GrayWizard;
+namespace GrayWizard\Interfaces;
 
 interface PlayerInterface
 {

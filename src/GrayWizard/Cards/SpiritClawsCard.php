@@ -2,7 +2,7 @@
 
 namespace GrayWizard\Cards;
 
-use GrayWizard\CardInterface;
+use GrayWizard\Interfaces\CardInterface;
 
 class SpiritClawsCard extends AbstractCard implements CardInterface
 {
