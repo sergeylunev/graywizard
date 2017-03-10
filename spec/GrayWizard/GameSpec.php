@@ -3,7 +3,7 @@
 namespace spec\GrayWizard;
 
 use GrayWizard\Game;
-use GrayWizard\PlayerInterface;
+use GrayWizard\Interfaces\PlayerInterface;
 use PhpSpec\ObjectBehavior;
 
 class GameSpec extends ObjectBehavior

@@ -26,14 +26,14 @@ class HandSpec extends ObjectBehavior
 
     public function it_should_add_cards_to_hand($card)
     {
-        $card->beADoubleOf('GrayWizard\CardInterface');
+        $card->beADoubleOf('GrayWizard\Interfaces\CardInterface');
         $this->addCard($card);
         $this->count()->shouldBe(1);
     }
 
     public function it_should_not_be_abble_add_more_card_than_maximum_hand_size($card)
     {
-        $card->beADoubleOf('GrayWizard\CardInterface');
+        $card->beADoubleOf('GrayWizard\Interfaces\CardInterface');
 
         for ($i = 0; $i < 11; $i++) {
             $this->addCard($card);

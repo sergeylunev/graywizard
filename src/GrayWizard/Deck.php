@@ -2,6 +2,8 @@
 
 namespace GrayWizard;
 
+use GrayWizard\Interfaces\DeckInterface;
+
 class Deck implements DeckInterface
 {
     public $DeckArray = [];

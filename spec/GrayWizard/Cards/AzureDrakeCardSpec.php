@@ -5,7 +5,7 @@ namespace spec\GrayWizard\Cards;
 use GrayWizard\Cards\AzureDrakeCard;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use GrayWizard\CardInterface;
+use GrayWizard\Interfaces\CardInterface;
 
 class AzureDrakeCardSpec extends ObjectBehavior
 {

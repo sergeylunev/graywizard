@@ -5,7 +5,7 @@ namespace spec\GrayWizard\Cards;
 use GrayWizard\Cards\CoinCard;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use GrayWizard\CardInterface;
+use GrayWizard\Interfaces\CardInterface;
 
 class CoinCardSpec extends ObjectBehavior
 {
