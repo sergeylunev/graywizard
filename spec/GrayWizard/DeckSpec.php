@@ -2,20 +2,27 @@
 
 namespace spec\GrayWizard;
 
+use GrayWizard\CardFactory;
+use GrayWizard\Cards\TestCard;
 use GrayWizard\Deck;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class DeckSpec extends ObjectBehavior
 {
-    
+    /**
+     * @var CardFactory
+     */
+    protected $cardFactory;
+
     /**
      * Technical method
      * Constructing object for test
      */
     function let()
     {
-        $this->beConstructedWith([]);
+        $this->cardFactory = new CardFactory();
+        $this->beConstructedWith([], $this->cardFactory);
     }
 
     /**
@@ -47,7 +54,10 @@ class DeckSpec extends ObjectBehavior
      */
     public function it_can_be_constructed_with_actual_cards()
     {
-        $this->beConstructedWith(['Test', 'Test', 'Coin', 'Coin', 'LightningBolt', 'LightningBolt', 'PatchesThePirate']);
+        $this->beConstructedWith(
+            ['Test', 'Test', 'Coin', 'Coin', 'LightningBolt', 'LightningBolt', 'PatchesThePirate'],
+            $this->cardFactory
+        );
         $this->count()->shouldBe(7);
     }
 
@@ -57,7 +67,10 @@ class DeckSpec extends ObjectBehavior
      */
     public function it_can_not_have_more_then_two_copies_of_commons()
     {
-        $this->beConstructedWith(['Coin', 'Coin', 'Coin']);
+        $this->beConstructedWith(
+            ['Coin', 'Coin', 'Coin'],
+            $this->cardFactory
+        );
         $this->shouldThrow('\Exception')->duringInstantiation();
     }
 
@@ -67,7 +80,10 @@ class DeckSpec extends ObjectBehavior
      */
     public function it_can_not_have_more_then_one_cpoy_of_rare()
     {
-        $this->beConstructedWith(['PatchesThePirate', 'PatchesThePirate']);
+        $this->beConstructedWith(
+            ['PatchesThePirate', 'PatchesThePirate'],
+            $this->cardFactory
+        );
         $this->shouldThrow('\Exception')->duringInstantiation();
     }
 
@@ -77,7 +93,10 @@ class DeckSpec extends ObjectBehavior
      */
      public function it_throws_exception_if_we_dont_have_such_card()
     {
-        $this->beConstructedWith(['WrongName']);
+        $this->beConstructedWith(
+            ['WrongName'],
+            $this->cardFactory
+        );
         $this->shouldThrow('\Exception')->duringInstantiation();
     }
 
@@ -96,10 +115,10 @@ class DeckSpec extends ObjectBehavior
      */
     public function it_can_draw_card_from_deck()
     {
-    $this->beConstructedWith(['Test']); 
- 
-    $this->count()->shouldBe(1); 
-    $this->draw()->shouldBeAnInstanceOf('GrayWizard\Cards\TestCard'); 
-    $this->count()->shouldBe(0);
+        $this->beConstructedWith(['Test'], $this->cardFactory);
+
+        $this->count()->shouldBe(1);
+        $this->draw()->shouldBeAnInstanceOf(TestCard::class);
+        $this->count()->shouldBe(0);
     }
 }
