@@ -16,6 +16,14 @@ class CardFactory implements CardFactoryInterface
      */
     public function createCard($cardName)
     {
+        $cardClass = ('\GrayWizard\\Cards\\' . $cardName . 'Card');
+        if (!class_exists($cardClass)) {
+            throw new \Exception('Wrong Card: ' . $cardName);
+        }
+        
+        $newCard = new $cardClass();
+        
+        return $newCard;
     }
 
     /**
@@ -27,5 +35,13 @@ class CardFactory implements CardFactoryInterface
      */
     public function hasCard($cardName)
     {
+        $cardClass = ('\GrayWizard\\Cards\\' . $cardName . 'Card');
+        $canCreate = true;
+        
+        if (!class_exists($cardClass)) {
+            $canCreate = false;
+        }
+        
+        return $canCreate;
     }
 }

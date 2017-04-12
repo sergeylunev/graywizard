@@ -17,7 +17,7 @@ class CardFactorySpec extends ObjectBehavior
 
     public function it_should_create_card()
     {
-        $this->createCard('LightningBolt')->shouldBeInstanceOf(LightningBoltCard::class);
+        $this->createCard('LightningBolt')->shouldBeAnInstanceOf(LightningBoltCard::class);
     }
 
     public function it_should_throw_exception_if_we_dont_have_such_card()
