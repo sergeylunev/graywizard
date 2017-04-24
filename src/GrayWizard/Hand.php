@@ -70,7 +70,7 @@ class Hand implements HandInterface
      * @return \GrayWizard\Interfaces\CardInterface|mixed
      * @throws \Exception
      */
-    public function play(CardInterface $cardToPlay)
+    public function play($cardToPlay)
     {
         if (!in_array($cardToPlay, $this->cards)) {
             throw new \Exception('We don\'t have such card in hand');
@@ -79,8 +79,9 @@ class Hand implements HandInterface
         $cardKey = array_search($cardToPlay, $this->cards);
 
         $card = $this->cards[$cardKey];
+        $newCard = $this->CardFactory->createCard($cardToPlay);
         unset($this->cards[$cardKey]);
 
-        return $card;
+        return $newCard;
     }
 }

@@ -23,7 +23,7 @@ interface HandInterface
     /**
      * @param CardInterface $card
      */
-    public function addCard(CardInterface $card);
+    public function addCard($card);
 
     /**
      * @return integer
@@ -39,5 +39,5 @@ interface HandInterface
      * @param CardInterface $cardToPlay
      * @return mixed
      */
-    public function play(CardInterface $cardToPlay);
+    public function play($cardToPlay);
 }
