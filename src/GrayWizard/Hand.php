@@ -35,7 +35,7 @@ class Hand implements HandInterface
      *
      * @param CardInterface $card
      */
-    public function addCard(CardInterface $card)
+    public function addCard($card)
     {
         if ($this->count() === self::MAX_SIZE) {
             return;
