@@ -4,6 +4,8 @@ namespace GrayWizard\Interfaces;
 
 interface PlayerInterface
 {
+    const MAX_HEALTH = 30;
+
     /**
      * PlayerInterface constructor.
      * @param DeckInterface $deck

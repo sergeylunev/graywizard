@@ -2,12 +2,27 @@
 
 namespace GrayWizard;
 
+use GrayWizard\Interfaces\DeckInterface;
+use GrayWizard\Interfaces\GraveYardInterface;
+use GrayWizard\Interfaces\HandInterface;
+
 class Player
 {
-    public function __construct($deck, $hand, $graveyard)
+    /**
+     * @var DeckInterface
+     */
+    protected $playerDeck;
+    /**
+     * @var HandInterface
+     */
+    protected $playerHand;
+    /**
+     * @var GraveYardInterface
+     */
+    protected $playerGraveyard;
+
+    public function __construct(DeckInterface $deck, HandInterface $hand, GraveYardInterface $graveyard)
     {
-//        TODO: here we need to get Deck object as argument
-//              also Hand and GraveYard objects needs to be passed as arguments
         $this->playerDeck = $deck;
         $this->playerHand = $hand;
         $this->playerGraveyard = $graveyard;
@@ -26,5 +41,25 @@ class Player
     public function getGraveYard()
     {
         return $this->playerGraveyard;
+    }
+
+    public function getHealth()
+    {
+        // TODO: write logic here
+    }
+
+    public function wounds($argument1)
+    {
+        // TODO: write logic here
+    }
+
+    public function heal($argument1)
+    {
+        // TODO: write logic here
+    }
+
+    public function isAlive()
+    {
+        // TODO: write logic here
     }
 }
