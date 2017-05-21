@@ -2,12 +2,24 @@
 
 namespace spec\GrayWizard;
 
+use GrayWizard\CardFactory;
 use GrayWizard\Cards;
 use GrayWizard\Hand;
 use PhpSpec\ObjectBehavior;
 
 class HandSpec extends ObjectBehavior
 {
+    /**
+     * @var CardFactory
+     */
+    protected $cardFactory;
+
+    public function let()
+    {
+        $this->cardFactory = new CardFactory();
+        $this->beConstructedWith([], $this->cardFactory);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(Hand::class);
@@ -24,19 +36,16 @@ class HandSpec extends ObjectBehavior
         $this->getMaximumSize()->shouldBe(10);
     }
 
-    public function it_should_add_cards_to_hand($card)
+    public function it_should_add_cards_to_hand()
     {
-        $card->beADoubleOf('GrayWizard\Interfaces\CardInterface');
-        $this->addCard($card);
+        $this->addCard('LightningBolt');
         $this->count()->shouldBe(1);
     }
 
     public function it_should_not_be_abble_add_more_card_than_maximum_hand_size($card)
     {
-        $card->beADoubleOf('GrayWizard\Interfaces\CardInterface');
-
         for ($i = 0; $i < 11; $i++) {
-            $this->addCard($card);
+            $this->addCard('LightningBolt');
         }
 
         $this->count()->shouldBe(10);
@@ -44,13 +53,8 @@ class HandSpec extends ObjectBehavior
 
     public function it_can_get_list_of_cards_in_hand()
     {
-        $cards = [
-            new Cards\CoinCard(),
-            new Cards\CoinCard(),
-            new Cards\CoinCard(),
-        ];
-
-        $this->beConstructedWith($cards);
+        $cards = ['Coin', 'Coin', 'Coin'];
+        $this->beConstructedWith($cards, $this->cardFactory);
 
         $this->count()->shouldBe(3);
         $this->getCards()->shouldBeArray();
@@ -59,37 +63,26 @@ class HandSpec extends ObjectBehavior
 
     public function it_should_have_ability_to_play_card()
     {
-        $cardToPlay = new Cards\CoinCard();
+        $cards = ['LightningBolt', 'PatchesThePirate', 'Coin'];
 
-        $cards = [
-            new Cards\LightningBoltCard(),
-            new Cards\PatchesThePirateCard(),
-            $cardToPlay,
-        ];
-
-        $this->beConstructedWith($cards);
+        $this->beConstructedWith($cards, $this->cardFactory);
         $this->count()->shouldBe(3);
-        $this->play($cardToPlay)->shouldBe($cardToPlay);
+        $this->play('Coin')->shouldBeAnInstanceOf(Cards\CoinCard::class);
         $this->count()->shouldBe(2);
     }
 
     public function it_throw_exception_if_we_try_to_play_card_that_not_in_hand()
     {
-        $cardToPlay = new Cards\LightningBoltCard();
+        $cardToPlay = 'LightningBolt';
+        $cards = ['Coin', 'Coin', 'Coin'];
 
-        $cards = [
-            new Cards\CoinCard(),
-            new Cards\CoinCard(),
-            new Cards\CoinCard(),
-        ];
-
-        $this->beConstructedWith($cards);
+        $this->beConstructedWith($cards, $this->cardFactory);
         $this->shouldThrow('\Exception')->during('play', [$cardToPlay]);
     }
 
     public function it_throw_exception_if_we_try_to_play_card_with_empty_hand()
     {
-        $cardToPlay = new Cards\LightningBoltCard();
+        $cardToPlay = 'LightningBolt';
         $this->shouldThrow('\Exception')->during('play', [$cardToPlay]);
     }
 }

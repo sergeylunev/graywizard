@@ -12,8 +12,9 @@ interface HandInterface
     /**
      * HandInterface constructor.
      * @param array $cards
+     * @param CardFactoryInterface $cardFactory
      */
-    public function __construct(array $cards = []);
+    public function __construct(array $cards = [], CardFactoryInterface $cardFactory);
 
     /**
      * @return integer
@@ -23,7 +24,7 @@ interface HandInterface
     /**
      * @param CardInterface $card
      */
-    public function addCard(CardInterface $card);
+    public function addCard($card);
 
     /**
      * @return integer
@@ -39,5 +40,5 @@ interface HandInterface
      * @param CardInterface $cardToPlay
      * @return mixed
      */
-    public function play(CardInterface $cardToPlay);
+    public function play($cardToPlay);
 }
