@@ -5,18 +5,20 @@ namespace spec\GrayWizard;
 use GrayWizard\Interfaces\DeckInterface;
 use GrayWizard\Interfaces\GraveYardInterface;
 use GrayWizard\Interfaces\HandInterface;
+use GrayWizard\Interfaces\ManaPoolInterface;
 use GrayWizard\Player;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class PlayerSpec extends ObjectBehavior
 {
-    public function let($deck, $hand, $graveyard)
+    public function let(
+        DeckInterface $deck,
+        HandInterface $hand,
+        GraveYardInterface $graveyard,
+        ManaPoolInterface $manaPool)
     {
-        $deck->beADoubleOf(DeckInterface::class);
-        $hand->beADoubleOf(HandInterface::class);
-        $graveyard->beADoubleOf(GraveYardInterface::class);
-        $this->beConstructedWith($deck, $hand, $graveyard);
+        $this->beConstructedWith($deck, $hand, $graveyard, $manaPool);
     }
 
     function it_is_initializable()
@@ -37,5 +39,10 @@ class PlayerSpec extends ObjectBehavior
     public function it_should_have_graveyard()
     {
         $this->getGraveYard()->shouldBeAnInstanceOf(GraveYardInterface::class);
+    }
+
+    public function it_should_have_mana_pool()
+    {
+        $this->getManaPool()->shouldBeAnInstanceOf(ManaPoolInterface::class);
     }
 }

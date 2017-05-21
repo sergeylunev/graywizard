@@ -2,7 +2,9 @@
 
 namespace GrayWizard;
 
-class ManaPool
+use GrayWizard\Interfaces\ManaPoolInterface;
+
+class ManaPool implements ManaPoolInterface
 {
     const MAX_AMOUNT = 10;
 
