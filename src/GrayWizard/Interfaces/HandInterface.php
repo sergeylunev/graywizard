@@ -12,8 +12,9 @@ interface HandInterface
     /**
      * HandInterface constructor.
      * @param array $cards
+     * @param CardFactoryInterface $cardFactory
      */
-    public function __construct(array $cards = []);
+    public function __construct(array $cards = [], CardFactoryInterface $cardFactory);
 
     /**
      * @return integer

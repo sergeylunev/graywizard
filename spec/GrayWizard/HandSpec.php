@@ -63,13 +63,11 @@ class HandSpec extends ObjectBehavior
 
     public function it_should_have_ability_to_play_card()
     {
-        $cardToPlay = new Cards\CoinCard();
-
         $cards = ['LightningBolt', 'PatchesThePirate', 'Coin'];
 
         $this->beConstructedWith($cards, $this->cardFactory);
         $this->count()->shouldBe(3);
-        $this->play('Coin')->shouldBe($cardToPlay);
+        $this->play('Coin')->shouldBeAnInstanceOf(Cards\CoinCard::class);
         $this->count()->shouldBe(2);
     }
 

@@ -2,6 +2,7 @@
 
 namespace GrayWizard;
 
+use GrayWizard\Interfaces\CardFactoryInterface;
 use GrayWizard\Interfaces\CardInterface;
 use GrayWizard\Interfaces\HandInterface;
 
@@ -11,13 +12,19 @@ class Hand implements HandInterface
      * @var array
      */
     protected $cards = [];
+    /**
+     * @var CardFactoryInterface
+     */
+    private $cardFactory;
 
     /**
      * @param CardInterface[] $cards Array of instance of Cards
+     * @param CardFactoryInterface $cardFactory
      */
-    public function __construct(array $cards = [])
+    public function __construct(array $cards = [], CardFactoryInterface $cardFactory)
     {
         $this->cards = $cards;
+        $this->cardFactory = $cardFactory;
     }
 
     /**
@@ -79,7 +86,7 @@ class Hand implements HandInterface
         $cardKey = array_search($cardToPlay, $this->cards);
 
         $card = $this->cards[$cardKey];
-        $newCard = $this->CardFactory->createCard($cardToPlay);
+        $newCard = $this->cardFactory->createCard($cardToPlay);
         unset($this->cards[$cardKey]);
 
         return $newCard;
