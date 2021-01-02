@@ -1,6 +1,6 @@
 {
     "require": {
-        "phpspec/phpspec": "^3.2"
+        "phpspec/phpspec": "^6.2"
     },
     "config": {
         "bin-dir": "bin"

@@ -2,6 +2,6 @@
 
 namespace GrayWizard;
 
-class BatleField
+class BattleField
 {
 }
